@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rotate</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+
+      .container {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        perspective: 1000px;
+      }
+
+      .scene {
+        width: 100%;
+        height: 100%;
+        transition: transform 0.5s;
+      }
+
+      img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: block;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+      #open {
+        display: none;
+      }
+
+      .treasure-img {
+        width: 80%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="container">
+      <div class="scene" id="scene">
+        <div id="closed">
+          <img
+            src="https://static.vecteezy.com/system/resources/previews/007/215/253/original/treasure-chest-isolated-illustration-closed-chest-with-lock-in-cartoon-style-vector.jpg"
+            class="treasure-img"
+            alt="Closed Treasure Chest"
+          />
+        </div>
+        <div id="open">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqbJuB_bTiLk9f2sQ1cueEl9o3sxDEqUvybA&s"
+            class="treasure-img"
+            alt="Open Treasure Chest"
+          />
+        </div>
+      </div>
+    </div>
+    <script>
+      window.addEventListener('deviceorientation', (event) => {
+        const beta = event.beta;
+        const closed = document.getElementById('closed');
+        const open = document.getElementById('open');
+        if (beta <= -60) {
+          closed.style.display = 'none';
+          open.style.display = 'flex';
+        } else {
+          open.style.display = 'none';
+          closed.style.display = 'flex';
+        }
+      });
+    </script>
+  </body>
+</html>
