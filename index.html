@@ -69,17 +69,16 @@
       </div>
     </div>
     <script>
-      console.log('hehe');
-      window.addEventListener('deviceorientation', (event) => {
+      window.addEventListener("deviceorientation", (event) => {
         const beta = event.beta;
-        const closed = document.getElementById('closed');
-        const open = document.getElementById('open');
+        const closed = document.getElementById("closed");
+        const open = document.getElementById("open");
         if (beta <= -60) {
-          closed.style.display = 'none';
-          open.style.display = 'flex';
+          closed.style.display = "none";
+          open.style.display = "flex";
         } else {
-          open.style.display = 'none';
-          closed.style.display = 'flex';
+          open.style.display = "none";
+          closed.style.display = "flex";
         }
       });
     </script>
