@@ -70,12 +70,6 @@
       </div>
     </div>
     <script>
-      if (
-        typeof DeviceOrientationEvent !== "undefined" &&
-        typeof DeviceOrientationEvent.requestPermission === "function"
-      )
-        alert('its working');
-
       function permission() {
         if (
           typeof DeviceOrientationEvent !== "undefined" &&
@@ -103,7 +97,7 @@
             })
             .catch(console.error);
         } else {
-          alert("DeviceOrientationEvent is not defined");
+          //alert("DeviceOrientationEvent is not defined");
           window.addEventListener('deviceorientation', (event) => {
             const beta = event.beta;
                   const closed = document.getElementById("closed");
@@ -119,8 +113,9 @@
         }
       }
 
-      const btn = document.getElementById("request");
-      btn.addEventListener("click", permission);
+      permisson()
+      //const btn = document.getElementById("request");
+      //btn.addEventListener("click", permission);
 
       /*window.addEventListener("deviceorientation", (event) => {
         const beta = event.beta;
