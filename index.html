@@ -42,11 +42,6 @@
       #open {
         display: none;
       }
-
-      .treasure-img {
-        width: 80%;
-        height: auto;
-      }
     </style>
   </head>
   <body>
@@ -54,14 +49,21 @@
       <div class="scene" id="scene">
         <div id="closed">
           <img
-            src="https://static.vecteezy.com/system/resources/previews/007/215/253/original/treasure-chest-isolated-illustration-closed-chest-with-lock-in-cartoon-style-vector.jpg"
+            src="https://i.ibb.co/2FPRFyb/chest-close.png"
             class="treasure-img"
             alt="Closed Treasure Chest"
           />
         </div>
         <div id="open">
+          <div>
+            <a
+              href="https://www.youtube.com/"
+              style="display: block; text-align: center"
+              >LINKです</a
+            >
+          </div>
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqbJuB_bTiLk9f2sQ1cueEl9o3sxDEqUvybA&s"
+            src="https://i.ibb.co/5KJqhwP/chest-open.png"
             class="treasure-img"
             alt="Open Treasure Chest"
           />
@@ -84,12 +86,12 @@
                   const beta = event.beta;
                   const closed = document.getElementById("closed");
                   const open = document.getElementById("open");
-                  if (beta <= -60) {
+                  if (beta <= -45) {
                     closed.style.display = "none";
-                    open.style.display = "flex";
+                    open.style.display = "block";
                   } else {
                     open.style.display = "none";
-                    closed.style.display = "flex";
+                    closed.style.display = "block";
                   }
                 });
               }
@@ -97,18 +99,18 @@
             .catch(console.error);
         } else {
           //alert("DeviceOrientationEvent is not defined");
-          window.addEventListener('deviceorientation', (event) => {
+          window.addEventListener("deviceorientation", (event) => {
             const beta = event.beta;
-                  const closed = document.getElementById("closed");
-                  const open = document.getElementById("open");
-                  if (beta <= -60) {
-                    closed.style.display = "none";
-                    open.style.display = "flex";
-                  } else {
-                    open.style.display = "none";
-                    closed.style.display = "flex";
-                  }
-          })
+            const closed = document.getElementById("closed");
+            const open = document.getElementById("open");
+            if (beta <= -45) {
+              closed.style.display = "none";
+              open.style.display = "block";
+            } else {
+              open.style.display = "none";
+              closed.style.display = "block";
+            }
+          });
         }
       }
       const btn = document.getElementById("container");
