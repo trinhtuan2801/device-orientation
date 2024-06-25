@@ -50,6 +50,7 @@
     </style>
   </head>
   <body>
+    <div id="request"></div>
     <div class="container" id="container">
       <div class="scene" id="scene">
         <div id="closed">
@@ -69,11 +70,41 @@
       </div>
     </div>
     <script>
-      if (typeof(DeviceOrientationEvent) !== "undefined" && typeof(DeviceOrientationEvent.requestPermission) === "function") {
-        alert('not to grant request')
+      function permission() {
+        if (
+          typeof DeviceOrientationEvent !== "undefined" &&
+          typeof DeviceOrientationEvent.requestPermission === "function"
+        ) {
+          // (optional) Do something before API request prompt.
+          DeviceOrientationEvent.requestPermission()
+            .then((response) => {
+              // (optional) Do something after API prompt dismissed.
+              if (response == "granted") {
+                window.addEventListener("deviceorientation", (e) => {
+                  // do something for 'e' here.
+                  const beta = event.beta;
+                  const closed = document.getElementById("closed");
+                  const open = document.getElementById("open");
+                  if (beta <= -60) {
+                    closed.style.display = "none";
+                    open.style.display = "flex";
+                  } else {
+                    open.style.display = "none";
+                    closed.style.display = "flex";
+                  }
+                });
+              }
+            })
+            .catch(console.error);
+        } else {
+          alert("DeviceOrientationEvent is not defined");
+        }
       }
-      
-      window.addEventListener("deviceorientation", (event) => {
+
+      const btn = document.getElementById("request");
+      btn.addEventListener("click", permission());
+
+      /*window.addEventListener("deviceorientation", (event) => {
         const beta = event.beta;
         const closed = document.getElementById("closed");
         const open = document.getElementById("open");
@@ -84,7 +115,7 @@
           open.style.display = "none";
           closed.style.display = "flex";
         }
-      });
+      }); */
     </script>
   </body>
 </html>
