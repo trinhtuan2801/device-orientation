@@ -50,7 +50,6 @@
     </style>
   </head>
   <body>
-    <div id="request">click here</div>
     <div class="container" id="container">
       <div class="scene" id="scene">
         <div id="closed">
@@ -112,8 +111,8 @@
           })
         }
       }
-      const btn = document.getElementById("request");
-      btn.addEventListener("click", permission());
+      const btn = document.getElementById("container");
+      btn.addEventListener("click", permission);
 
       /*window.addEventListener("deviceorientation", (event) => {
         const beta = event.beta;
