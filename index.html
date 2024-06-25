@@ -50,7 +50,7 @@
     </style>
   </head>
   <body>
-    <div id="request"></div>
+    <div id="request">click here</div>
     <div class="container" id="container">
       <div class="scene" id="scene">
         <div id="closed">
@@ -70,6 +70,12 @@
       </div>
     </div>
     <script>
+      if (
+        typeof DeviceOrientationEvent !== "undefined" &&
+        typeof DeviceOrientationEvent.requestPermission === "function"
+      )
+        alert('its working');
+
       function permission() {
         if (
           typeof DeviceOrientationEvent !== "undefined" &&
@@ -102,7 +108,7 @@
       }
 
       const btn = document.getElementById("request");
-      btn.addEventListener("click", permission());
+      btn.addEventListener("click", permission);
 
       /*window.addEventListener("deviceorientation", (event) => {
         const beta = event.beta;
