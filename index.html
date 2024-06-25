@@ -69,7 +69,9 @@
       </div>
     </div>
     <script>
-      alert('lolllll')
+      if (typeof(DeviceOrientationEvent) !== "undefined" && typeof(DeviceOrientationEvent.requestPermission) === "function") {
+        alert('not to grant request')
+      }
       
       window.addEventListener("deviceorientation", (event) => {
         const beta = event.beta;
