@@ -30,7 +30,7 @@
       img {
         position: absolute;
         width: 100%;
-        height: 100%;
+        height: auto;
         display: block;
         justify-content: center;
         align-items: center;
@@ -44,7 +44,7 @@
       }
 
       .treasure-img {
-        width: 80%;
+        width: 100%;
         height: auto;
       }
     </style>
@@ -60,6 +60,13 @@
           />
         </div>
         <div id="open">
+          <div>
+            <a
+              href="https://www.youtube.com/"
+              style="margin: 0 auto; display: block; text-align: center; width: 100%;"
+              >クリックしてください</a
+            >
+          </div>
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqbJuB_bTiLk9f2sQ1cueEl9o3sxDEqUvybA&s"
             class="treasure-img"
@@ -86,29 +93,33 @@
                   const open = document.getElementById("open");
                   if (beta <= -60) {
                     closed.style.display = "none";
-                    open.style.display = "flex";
-                  } else {
+                    open.style.display = "block";
+                    //const prize = Math.floor(Math.random()*1000000000)
+                    //alert(prize +"JPY")
+                  } /* else {
                     open.style.display = "none";
-                    closed.style.display = "flex";
-                  }
+                    closed.style.display = "block";
+                  } */
                 });
               }
             })
             .catch(console.error);
         } else {
           //alert("DeviceOrientationEvent is not defined");
-          window.addEventListener('deviceorientation', (event) => {
+          window.addEventListener("deviceorientation", (event) => {
             const beta = event.beta;
-                  const closed = document.getElementById("closed");
-                  const open = document.getElementById("open");
-                  if (beta <= -60) {
-                    closed.style.display = "none";
-                    open.style.display = "flex";
-                  } else {
-                    open.style.display = "none";
-                    closed.style.display = "flex";
-                  }
-          })
+            const closed = document.getElementById("closed");
+            const open = document.getElementById("open");
+            if (beta <= -60) {
+              closed.style.display = "none";
+              open.style.display = "block";
+              //const prize = Math.floor(Math.random()*1000000000)
+              //alert(prize +"JPY")
+            } /*else {
+              open.style.display = "none";
+              closed.style.display = "block";
+            } */
+          });
         }
       }
       const btn = document.getElementById("container");
